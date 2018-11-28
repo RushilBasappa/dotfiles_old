@@ -1,7 +1,3 @@
-#!/bin/zsh
-
-# Release some autoloads
-
 typeset TMPFILE="/tmp/.zplug-$$$RANDOM"
 
 spin()
@@ -21,7 +17,6 @@ spin()
         for spinner in "${spinners[@]}"
         do
             if [[ -f $TMPFILE ]]; then
-                echo $TMPFILE
                 rm -f $TMPFILE
                 tput cnorm
                 return 1
