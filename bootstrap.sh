@@ -2,7 +2,7 @@
 autoload -Uz colors; colors
 autoload -Uz is-at-least; is-at-least
 
-for file in ./library/*; do
+for file in ./{library,helpers}/*; do
   source $file
 done
 
@@ -27,10 +27,31 @@ check_machine(){
   esac
 }
 
+modify_zshrc(){
+  local TAB=$'\t'
+  local PLUGINS="git docker kubectl globalias"
+
+  sed "/^#/d;/^$/d;/plugins/{n;s/.*/${TAB}${PLUGINS}/;}" ~/.zshrc > ~/.zshrc-tmp
+  mv ~/.zshrc-tmp ~/.zshrc
+}
+
+
 main(){
-  execute --title "Check if Machine is supported" "sleep 1" "check_machine" --error "Not supported $machine"
-  execute --title "Checking if your zsh version is newer than 4.1.9" "sleep 1" "is-at-least 4.1.9"
-  execute --title "Oh My Zsh Installation" "sleep 1" "oh_my_zsh_install" --error "Is Git Installed?" --error "Check if git clone is failing"
+  execute \
+    --title "Check if Machine is supported" \
+    --error "Not supported $machine" \
+    "sleep 1" "check_machine"
+  execute \
+    --title "Checking if your zsh version is newer than 4.1.9" \
+    "sleep 1" "is-at-least 4.1.9"
+  execute \
+    --title "Oh My Zsh Installation" \
+    --error "Is Git Installed?" \
+    --error "Check if git clone is failing" \
+    "sleep 1" "oh_my_zsh_install"
+  execute \
+    --title "Modify zshrc" \
+    "sleep 1" "modify_zshrc"
 }
 
 main
