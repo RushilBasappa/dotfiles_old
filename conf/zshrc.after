@@ -1,0 +1,71 @@
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/rushil/Workspace/sdk/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/rushil/Workspace/sdk/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/rushil/Workspace/sdk/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/rushil/Workspace/sdk/google-cloud-sdk/completion.zsh.inc'; fi
+
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+export ZPLUG_HOME=~/.zplug
+
+export PATH=$PATH:/usr/local/mysql/bin
+export GOPATH="${HOME}/.go"
+export GOROOT="$(brew --prefix golang)/libexec"
+
+( hash go > /dev/null 2>&1 ) && export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
+
+export VAULT_ADDR='http://10.128.0.33:8200'
+# export VAULT_ADDR='http://10.128.0.65:8200'
+
+################# ZPLUG ###################
+
+source $ZPLUG_HOME/init.zsh
+
+zplug "zsh-users/zsh-autosuggestions"
+zplug "zsh-users/zsh-syntax-highlighting"
+
+if ! zplug check; then
+  printf "Install zplug plugins? [y/N]: "
+  if read -q; then
+    echo; zplug install
+  fi
+fi
+
+zplug load
+
+#############################################
+
+# . ~/z.sh
+
+################### ALIAS ###################
+
+freeport(){
+  while getopts "f:" opt; do
+    case $opt in
+      f)
+        port=$OPTARG
+        kill -9 $(lsof -ti :${port})
+        if [ $? -eq 0 ]; then
+          echo "Killed ${port}"
+        fi
+        ;;
+      \?)
+        echo "Invalid option: -$OPTARG" >&2
+        ;; esac done
+  echo $1
+}
+
+histrm() { LC_ALL=C gsed -i '/$1/d' $HISTFILE }
+
+alias brewup='brew update; brew upgrade; brew prune; brew cleanup; brew doctor'
+alias ws='cd ~/WorkSpace/'
+alias ssh='ssh -o ServerAliveInterval=240'
+alias revmux='. ~/./tmux_revdirect.sh'
+alias dbdump='. ~/./reloaddb.sh'
+alias kcd='kubectl config set-context $(kubectl config current-context) --namespace '
+alias vlc='/Applications/VLC.app/Contents/MacOS/VLC'
+alias vlcx='/Applications/VLC.app/Contents/MacOS/VLC --no-video-deco --no-embedded-video --video-on-top'
+
+alias kgj="kubectl get jobs.batch"
+alias kej="kubectl edit jobs.batch"
+alias ls="exa"

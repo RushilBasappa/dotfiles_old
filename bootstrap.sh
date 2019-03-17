@@ -2,39 +2,19 @@
 autoload -Uz colors; colors
 autoload -Uz is-at-least; is-at-least
 
+files=( "vimrc" "vimrc.after" "zshrc.after" "gitconfig")
+machine=$(uname -s)
+
+source variables.sh
+
 for file in ./{library,helpers}/*; do
   source $file
 done
 
-machine=$(uname -s)
-
-# if [[ -z $ZSH_VERSION ]]; then
-#     printf "zplug requires zsh 4.1.9 or newer\n"
-#     exit 1
-# fi
-
-if [[ -z $ZPLUG_HOME ]]; then
-    export ZPLUG_HOME=~/.zplug
+if [[ -z $ZSH_VERSION ]]; then
+  printf "zplug requires zsh 4.1.9 or newer\n"
+  exit 1
 fi
-
-check_machine(){
-  case $machine in
-    Linux | Darwin)
-      ;;
-    *)
-      return 1
-      ;;
-  esac
-}
-
-modify_zshrc(){
-  local TAB=$'\t'
-  local PLUGINS="git docker kubectl globalias"
-
-  sed "/^#/d;/^$/d;/plugins/{n;s/.*/${TAB}${PLUGINS}/;}" ~/.zshrc > ~/.zshrc-tmp
-  mv ~/.zshrc-tmp ~/.zshrc
-}
-
 
 main(){
   execute \
@@ -52,6 +32,14 @@ main(){
   execute \
     --title "Modify zshrc" \
     "sleep 1" "modify_zshrc"
+  execute \
+    --title "Installing zplug to $ZPLUG_HOME" \
+    --error "Is git installed?" \
+    --error "Does '$ZPLUG_HOME' already exist?" \
+    "sleep 1" "install_zplug"
+  execute \
+    --title "Create symlinks" \
+    "sleep 1" "create_symlinks"
 }
 
 main

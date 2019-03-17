@@ -1,0 +1,28 @@
+[color]
+  ui = true
+[user]
+	name = Rushil Basappa
+	email = rushil.oucse37@gmail.com
+[core]
+  editor = /usr/local/bin/vim
+[color "branch"]
+  local = yellow
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old = red bold
+  new = green bold
+[color "status"]
+  added = green
+  changed = yellow
+  untracked = red
+[alias]
+  ci = commit
+  co = checkout
+  st = status -sb
+  lg = log --graph --pretty=format:'%C(yellow)%h%C(auto)%d%Creset %s %C(white)- %an, %ar%Creset'
+[filter "lfs"]
+	process = git-lfs filter-process
+  required = true
+  clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f

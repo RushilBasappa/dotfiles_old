@@ -1,0 +1,16 @@
+{
+    "editor.formatOnSave": true,
+    "editor.fontFamily": "Dank Mono",
+    "workbench.startupEditor": "newUntitledFile",
+    "editor.fontLigatures": true,
+    "prettier.requireConfig": true,
+    "editor.tokenColorCustomizations": {
+        "textMateRules": [{
+                "scope": "comment",
+                "settings": {
+                        "fontStyle": "italic"
+                }
+        }]
+    }
+}
+

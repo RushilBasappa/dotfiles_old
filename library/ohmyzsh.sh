@@ -1,6 +1,6 @@
 oh_my_zsh_install() {
 
-  ZSH=~/.oh-my-zsh
+  local ZSH=~/.oh-my-zsh
 
   if [ -d $ZSH ]; then
     return 0
