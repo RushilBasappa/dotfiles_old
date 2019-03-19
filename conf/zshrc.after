@@ -33,6 +33,9 @@ fi
 
 zplug load
 
+# shortlived hotfix
+source <(helm completion zsh | sed -E 's/\["(.+)"\]/\[\1\]/g')
+
 #############################################
 
 # . ~/z.sh
