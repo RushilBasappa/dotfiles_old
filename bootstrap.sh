@@ -40,6 +40,9 @@ main(){
   execute \
     --title "Create symlinks" \
     "sleep 1" "create_symlinks"
+
+  printf " All processes are successfully completed \n"
+  printf " chsh -s /bin/zsh \n"
 }
 
 main

@@ -1,6 +1,6 @@
 oh_my_zsh_install() {
 
-  local ZSH=~/.oh-my-zsh
+  local ZSH="$HOME/.oh-my-zsh"
 
   if [ -d $ZSH ]; then
     return 0
@@ -8,17 +8,15 @@ oh_my_zsh_install() {
 
   umask g-w,o-w
 
-  command -v git >/dev/null 2>&1 || {
+  hash git 2>/dev/null || {
     return 1
   }
 
-  env git clone --depth=1 https://github.com/robbyrussell/oh-my-zsh.git "$ZSH" || {
-    return 1
-  }
+  git clone --depth=1 https://github.com/robbyrussell/oh-my-zsh.git "$ZSH"
 
   # printf "${BLUE}Looking for an existing zsh config...${NORMAL}\n"
   if [ -f ~/.zshrc ] || [ -h ~/.zshrc ]; then
-    mv ~/.zshrc ~/.zshrc.pre-oh-my-zsh;
+    mv ~/.zshrc ~/.zshrc.old;
   fi
 
   # printf "${BLUE}Using the Oh My Zsh template file and adding it to ~/.zshrc${NORMAL}\n"
@@ -27,13 +25,4 @@ oh_my_zsh_install() {
   export ZSH=\"$ZSH\"
   " ~/.zshrc > ~/.zshrc-omztemp
   mv -f ~/.zshrc-omztemp ~/.zshrc
-
-  TEST_CURRENT_SHELL=$(expr "$SHELL" : '.*/\(.*\)')
-  if [ "$TEST_CURRENT_SHELL" != "zsh" ]; then
-    if hash chsh >/dev/null 2>&1; then
-      chsh -s $(grep /zsh$ /etc/shells | tail -1)
-    fi
-  fi
-
-  env zsh -l
 }
