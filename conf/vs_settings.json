@@ -12,8 +12,12 @@
                 }
         }]
     },
+    "emmet.includeLanguages": {
+        "javascript": "javascriptreact",
+    },
     "editor.tabSize": 2,
     "editor.formatOnPaste": true,
-    "editor.formatOnType": false
+    "editor.formatOnType": false,
+    "window.zoomLevel": 0
 }
 

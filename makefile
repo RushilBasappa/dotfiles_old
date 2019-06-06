@@ -7,6 +7,7 @@ help:
 	@echo "    brew"
 	@echo ""
 
+
 pull_latest:
 	git add .
 	git stash
@@ -28,3 +29,7 @@ iterm:
 update:
 	pull_latest
 
+
+all:
+	brew
+	@./scripts/zsh.sh

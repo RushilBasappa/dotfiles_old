@@ -1,7 +1,10 @@
 #!/bin/bash
 
-HOMEBREW_PACKAGES=(exa gnu-sed wget)
-HOMEBREW_CASK_PACKAGES=(iterm2 spotify slack clipy)
+HOMEBREW_PACKAGES=( exa fzf gnu-sed gnupg gnupg2 kubectl mysql@5.7 node python the_silver_searcher wget yarn zplug )
+HOMEBREW_CASK_PACKAGES=( clipy evernote github google-chrome google-cloud-sdk iterm2 pritunl slack spotify teamviewer docker )
+
+# python 3.6.5
+# brew install --ignore-dependencies https://raw.githubusercontent.com/Homebrew/homebrew-core/f2a764ef944b1080be64bd88dca9a1d80130c558/Formula/python.rb
 
 brew_update(){
   echo "Brew update/upgrade"
@@ -18,9 +21,13 @@ brew_install(){
   for package in "${HOMEBREW_CASK_PACKAGES[@]}"; do
     brew cask info ${package} | grep --quiet 'Not installed' && brew cask install ${package}
   done
+
+  return 0
+}
+
+brew_link(){
+  brew link --force mysql@5.7
 }
 
 brew_update
 brew_install
-
-return 0

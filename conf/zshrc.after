@@ -14,6 +14,8 @@ export GOROOT="$(brew --prefix golang)/libexec"
 
 ( hash go > /dev/null 2>&1 ) && export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
 
+source /usr/local/bin/virtualenvwrapper.sh
+
 export VAULT_ADDR='http://10.128.0.33:8200'
 # export VAULT_ADDR='http://10.128.0.65:8200'
 
@@ -33,8 +35,8 @@ fi
 
 zplug load
 
-# shortlived hotfix
-source <(helm completion zsh | sed -E 's/\["(.+)"\]/\[\1\]/g')
+# shortlived hotfix for helm completion to work
+( hash helm > /dev/null 2>&1 ) && source <(helm completion zsh | sed -E 's/\["(.+)"\]/\[\1\]/g')
 
 #############################################
 

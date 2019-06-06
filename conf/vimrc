@@ -6,6 +6,7 @@ endif
 
 call plug#begin('~/.vim/plugged')
 
+Plug '/usr/local/opt/fzf'
 Plug 'airblade/vim-gitgutter'
 Plug 'andrewradev/splitjoin.vim'
 Plug 'christianrondeau/vim-base64'
