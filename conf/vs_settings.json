@@ -1,23 +1,39 @@
 {
-    "editor.formatOnSave": true,
-    "editor.fontFamily": "Dank Mono",
-    "workbench.startupEditor": "newUntitledFile",
-    "editor.fontLigatures": true,
-    "prettier.requireConfig": true,
-    "editor.tokenColorCustomizations": {
-        "textMateRules": [{
-                "scope": "comment",
-                "settings": {
-                        "fontStyle": "italic"
-                }
-        }]
-    },
-    "emmet.includeLanguages": {
-        "javascript": "javascriptreact",
-    },
-    "editor.tabSize": 2,
-    "editor.formatOnPaste": true,
-    "editor.formatOnType": false,
-    "window.zoomLevel": 0
+  "editor.formatOnSave": true,
+  "editor.fontFamily": "Dank Mono",
+  "workbench.startupEditor": "newUntitledFile",
+  "editor.fontLigatures": true,
+  // "prettier.requireConfig": true,
+  "editor.tokenColorCustomizations": {
+    "textMateRules": [
+      {
+        "scope": "comment",
+        "settings": {
+          "fontStyle": "italic"
+        }
+      }
+    ]
+  },
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  },
+  "files.associations": {
+    "*.js": "javascriptreact"
+  },
+  "editor.tabSize": 2,
+  "editor.formatOnPaste": true,
+  "editor.formatOnType": false,
+  "window.zoomLevel": 0,
+  "explorer.confirmDragAndDrop": false,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "python.formatting.blackArgs": ["--line-length", "80"],
+  "python.formatting.provider": "black",
+  "python.linting.pylintEnabled": true,
+  "python.linting.pep8Enabled": true,
+  "python.linting.enabled": true,
+  "explorer.confirmDelete": false,
+  "explorer.openEditors.visible": 0,
+  "workbench.sideBar.location": "right",
+  "breadcrumbs.enabled": false,
+  "editor.minimap.enabled": false
 }
-

@@ -1,7 +1,7 @@
 #!/bin/bash
 
-HOMEBREW_PACKAGES=( exa fzf gnu-sed gnupg gnupg2 kubectl mysql@5.7 node python the_silver_searcher wget yarn zplug )
-HOMEBREW_CASK_PACKAGES=( clipy evernote github google-chrome google-cloud-sdk iterm2 pritunl slack spotify teamviewer docker )
+HOMEBREW_PACKAGES=( vim exa fzf gnu-sed gnupg gnupg2 kubectl mysql@5.7 node python the_silver_searcher wget yarn zplug )
+HOMEBREW_CASK_PACKAGES=( clipy evernote github google-chrome google-cloud-sdk iterm2 pritunl slack spotify teamviewer docker tor-browser vlc )
 
 # python 3.6.5
 # brew install --ignore-dependencies https://raw.githubusercontent.com/Homebrew/homebrew-core/f2a764ef944b1080be64bd88dca9a1d80130c558/Formula/python.rb

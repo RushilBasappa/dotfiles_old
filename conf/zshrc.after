@@ -70,7 +70,9 @@ alias dbdump='. ~/./reloaddb.sh'
 alias kcd='kubectl config set-context $(kubectl config current-context) --namespace '
 alias vlc='/Applications/VLC.app/Contents/MacOS/VLC'
 alias vlcx='/Applications/VLC.app/Contents/MacOS/VLC --no-video-deco --no-embedded-video --video-on-top'
+alias rm='trash'
 
 alias kgj="kubectl get jobs.batch"
 alias kej="kubectl edit jobs.batch"
+alias kgpv="kubectl get pv"
 alias ls="exa"
