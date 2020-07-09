@@ -33,11 +33,6 @@ main(){
     --title "Modify zshrc" \
     "sleep 1" "modify_zshrc"
   execute \
-    --title "Installing zplug to $ZPLUG_HOME" \
-    --error "Is git installed?" \
-    --error "Does '$ZPLUG_HOME' already exist?" \
-    "sleep 1" "install_zplug"
-  execute \
     --title "Create symlinks" \
     "sleep 1" "create_symlinks"
 
